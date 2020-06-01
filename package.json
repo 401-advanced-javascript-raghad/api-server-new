@@ -1,30 +1,31 @@
 {
-  "name": "api-server-new",
+  "name": "data-structures-and-algorithms",
   "version": "1.0.0",
-  "description": "",
+  "description": "## here you can access to all my challenge files",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "jest": "^26.0.1",
-    "supertest": "^4.0.2"
-  },
   "scripts": {
-    "test": "jest --verbose --coverage"
+    "test": "jest --coverage --verbose",
+    "lint": "eslint '**/*.js'",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/401-advanced-javascript-raghad/api-server-new.git"
+    "url": "git+https://github.com/osamamousa204/data-structures-and-algorithms.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/401-advanced-javascript-raghad/api-server-new/issues"
+    "url": "https://github.com/osamamousa204/data-structures-and-algorithms/issues"
   },
-  "homepage": "https://github.com/401-advanced-javascript-raghad/api-server-new#readme"
+  "homepage": "https://github.com/osamamousa204/data-structures-and-algorithms#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "jest": "^26.0.1",
+    "supertest": "^4.0.2"
+  }
 }
