@@ -4,7 +4,7 @@ we’ll be using a moving away from json-server and creating a “real” API se
 ### Author: Raghad Al-Quran
 
 ### Links and Resources
-- [submission PR]()
+- [submission PR](https://github.com/401-advanced-javascript-raghad/api-server-new/pull/2)
 
 ### Modules
 #### `Node.js` , `Postman` , `Swagger` , `HTTPie` , `curl`
