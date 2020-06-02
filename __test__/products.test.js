@@ -1,33 +1,32 @@
 'use strict';
 const supergoose = require('@code-fellows/supergoose');
 
-const categories = require('../lib/models/categories/categories.collection');
+const products = require('../lib/models/products/products.collection');
 
 
-describe('categories Model', () =>{
-  let testObj = {name: 'test-categ1', display_name: 'raghad', description:'student'};
-  let test2Obj = {name: 'test-categ2', display_name: 'raghadQu', description:'student'};
-
-  it('can create() a categories', ()=> {
-    return categories.create(testObj)
+describe('products Model', () =>{
+  let testObj = {category:'developer', name: 'test-categ1', display_name: 'raghad', description:'student'};
+  let test2Obj = {category:'developer',name: 'test-categ2', display_name: 'raghadQu', description:'student'};
+  it('can create() a products', ()=> {
+    return products.create(testObj)
       .then(record => {
         Object.keys(testObj).forEach(key=> {
           expect(record[key]).toEqual(testObj[key]);
         });
       });
   });
-  it('can get() categories', ()=> {
-    return categories.get()
+  it('can get() products', ()=> {
+    return products.get()
       .then(results => {
         Object.keys(testObj).forEach(key=> {
           expect(results[0][key]).toEqual(testObj[key]);
         });
       });
   });
-  it('can update() categories', ()=> {
-    return categories.get()
+  it('can update() products', ()=> {
+    return products.get()
       .then(results => {
-        return categories.update(results[0]._id,test2Obj)
+        return products.update(results[0]._id,test2Obj)
           .then(data => {
             Object.keys(test2Obj).forEach(key=> {
               expect(data[key]).toEqual(test2Obj[key]);
@@ -35,12 +34,12 @@ describe('categories Model', () =>{
           });
       });
   });
-  it('can delete() categories', ()=> {
-    return categories.get()
+  it('can delete() products', ()=> {
+    return products.get()
       .then(results => {
-        return categories.delete(results[0]._id)
+        return products.delete(results[0]._id)
           .then(data => {
-            return categories.get()
+            return products.get()
               .then(results => {
                 expect(results).toEqual([]);
               });

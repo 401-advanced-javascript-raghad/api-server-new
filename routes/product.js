@@ -5,7 +5,7 @@ const router = express.Router();
 const notFoundHandler = require('../lib/middleware/404');
 const serverErrorHandler = require('../lib/middleware/500');
 
-const products = require('../lib/models/products/products.schema');
+const products = require('../lib/models/products/products.collection');
 
 router.post('/products', postProduct);
 router.get('/products', getProduct);
