@@ -1,85 +1,82 @@
 'use strict';
 
-const {server} = require('../lib/server');
-const supertest = require('supertest');
-const mockRequest = supertest(server);
+const supergoose = require('@code-fellows/supergoose');
+const { server } = require('../lib/server');
+const mockRequest = supergoose(server);
 
-describe('web server', () => {
-  it('should respond with 500', ()=> {
-        
-    return mockRequest.get('/bad')
-      .then(results=> {
-        expect(results.status).toBe(500);
-      }).catch(console.error);
+describe('categories API', ()=> {
+  it('it can get() categories ', ()=> {
+    let obj = {name: 'test-categ1', display_name: 'raghad', description:'student'};
+    return mockRequest
+      .post('/api/v1/categories')
+      .send(obj)
+      .then(data => {
+        return mockRequest.get('/api/v1/categories')
+          .then(result => {
+            Object.keys(obj).forEach(key=> {
+              expect(result.body[0][key]).toEqual(obj[key]);
+            });
+          });
+      });
   });
-  it('should respond 404 of an invalid route',() => {
 
+  it('can post() a new categories ', ()=> {
+    let obj = {name: 'test-categ1', display_name: 'raghad', description:'student'};
     return mockRequest
-      .get('/invalidroute')
-      .then(results => {
-        expect(results.status).toBe(404);
-      }).catch(console.log);
-  });
-  it('should respond properly /products', ()=> {
-    return mockRequest
-      .get('/products?query=developer')
-      .then(results => {
-        expect(results.status).toBe(200);
+      .post('/api/v1/categories')
+      .send(obj)
+      .then(data => {
+        expect(data.status).toBe(201);
+        Object.keys(obj).forEach(key => {
+          expect(data.body[key]).toEqual(obj[key]);
+        });
       });
   });
-  it('should respond properly /categories', ()=> {
+  // it('it can post() product ', ()=> {
+  //   let obj = {
+  //     'category' : 'test cat',
+  //     'name': 'test',
+  //     'display_name': 'testttt',
+  //     'description': 'The latest tests',
+  //   };
+  //   return mockRequest
+  //     .post('/products')
+  //     .send(obj)
+  //     .then(data => {
+  //       expect(data.status).toBe(201);
+  //       Object.keys(obj).forEach(key=> {
+  //         expect(data.body[key]).toEqual(obj[key]);
+  //       });
+  //     });
+  // });
+  // it('it can get() product ', ()=> {
+  //   let obj = {
+  //     'category' : 'test cat',
+  //     'name': 'test',
+  //     'display_name': 'testttt',
+  //     'description': 'The latest tests',
+  //   };
+  //   return mockRequest
+  //     .post('/products')
+  //     .send(obj)
+  //     .then(data => {
+  //       return mockRequest.get('/products')
+  //         .then(result => {
+  //           console.log(result.body);
+  //           Object.keys(obj).forEach(key=> {
+  //             expect(result.body[0][key]).toEqual(obj[key]);
+  //           });
+  //         });
+  //     });
+  // });
+  it('TEST post() failure ', ()=> {
+    let obj = {name: 'test'};
     return mockRequest
-      .get('/categories?query=developer')
-      .then(results => {
-        expect(results.status).toBe(200);
+      .post('/api/v1/categories')
+      .send(obj)
+      .then(data => {
+        expect(data.status).toBe(500);
       });
   });
-  it('should post data', ()=> {
-    return mockRequest
-      .post('/products')
-      .send({ category: 'developer',name: 'raghad', display_name: 'Raghad Al-Quran', description: 'Student' })
-      .then(results => {
-        expect(results.status).toBe(200);
-      });
-  });
-  it('should post data', ()=> {
-    return mockRequest
-      .post('/categories')
-      .send({name: 'raghad', display_name: 'Raghad Al-Quran', description: 'Student' })
-      .then(results => {
-        expect(results.status).toBe(200);
-      });
-  });
-  it('should update data', ()=> {
-    return mockRequest
-      .put('/categories/1')
-      .send({name: 'raghad', display_name: 'Raghad Al-Quran', description: 'Student',id: '1' })
-      .then(results => {
-        expect(results.status).toBe(200);
-      });
-  });
-  it('should update data', ()=> {
-    return mockRequest
-      .put('/products/1')
-      .send({category:'developer', name: 'raghad', display_name: 'Raghad Al-Quran', description: 'Student',id: '1' })
-      .then(results => {
-        expect(results.status).toBe(200);
-      });
-  });
-  it('should delete data', ()=> {
-    return mockRequest
-      .delete('/products/1')
-      .send({category:'developer', name: 'raghad', display_name: 'Raghad Al-Quran', description: 'Student',id: '1' })
-      .then(results => {
-        expect(results.status).toBe(200);
-      });
-  });
-  it('should delete data', ()=> {
-    return mockRequest
-      .delete('/products/1')
-      .send({name: 'raghad', display_name: 'Raghad Al-Quran', description: 'Student',id: '1' })
-      .then(results => {
-        expect(results.status).toBe(200);
-      });
-  });
+  
 });
