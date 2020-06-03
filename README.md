@@ -6,7 +6,7 @@ we’ll be using a moving away from json-server and creating a “real” API se
 ### Links and Resources
 - [submission PR class-07](https://github.com/401-advanced-javascript-raghad/api-server-new/pull/2)
 - [submission PR class-08](https://github.com/401-advanced-javascript-raghad/api-server-new/pull/3)
-- [submission PR class-09](https://github.com/401-advanced-javascript-raghad/api-server-new/pull/5)
+- [submission PR class-09](https://github.com/401-advanced-javascript-raghad/api-server-new/pull/8)
 
 ### Modules
 #### `Node.js` , `Postman` , `Swagger` , `HTTPie` , `curl`
