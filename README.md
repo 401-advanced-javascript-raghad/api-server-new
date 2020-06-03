@@ -6,6 +6,7 @@ we’ll be using a moving away from json-server and creating a “real” API se
 ### Links and Resources
 - [submission PR class-07](https://github.com/401-advanced-javascript-raghad/api-server-new/pull/2)
 - [submission PR class-08](https://github.com/401-advanced-javascript-raghad/api-server-new/pull/3)
+- [submission PR class-09](https://github.com/401-advanced-javascript-raghad/api-server-new/pull/5)
 
 ### Modules
 #### `Node.js` , `Postman` , `Swagger` , `HTTPie` , `curl`
@@ -14,16 +15,14 @@ we’ll be using a moving away from json-server and creating a “real” API se
 #### `express` , `jest` , `supertest`
 
 #### How to initialize/run your application
-- GET ALL: GET - http://localhost:3000/categories
-- GET SOME: GET - http://localhost:3000/categories?category=developer
-- GET ONE: GET - http://localhost:3000/categories/1
-- UPDATE ONE: PATCH or PUT - http://localhost:3000/categories/1
-- DELETE ONE: DELETE - http://localhost:3000/categories/1
-- GET ALL: GET - http://localhost:3000/products
-- GET SOME: GET - http://localhost:3000/products?category=developer
-- GET ONE: GET - http://localhost:3000/products/1
-- UPDATE ONE: PATCH or PUT - http://localhost:3000/products/1
-- DELETE ONE: DELETE - http://localhost:3000/products/1
+- GET ALL: GET - http://localhost:3000/api/v1/categories
+- GET ONE: GET - http://localhost:3000/api/v1/categories/1
+- UPDATE ONE: PATCH or PUT - http://localhost:3000/api/v1/categories/1
+- DELETE ONE: DELETE - http://localhost:3000/api/v1/categories/1
+- GET ALL: GET - http://localhost:3000/api/v1/products
+- GET ONE: GET - http://localhost:3000/api/v1/products/1
+- UPDATE ONE: PATCH or PUT - http://localhost:3000/api/v1/products/1
+- DELETE ONE: DELETE - http://localhost:3000/api/v1/products/1
 
 #### Tests
 
