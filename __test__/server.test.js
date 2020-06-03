@@ -19,6 +19,7 @@ describe('categories API', ()=> {
           });
       });
   });
+  
 
   it('can post() a new categories ', ()=> {
     let obj = {name: 'test-categ1', display_name: 'raghad', description:'student'};
@@ -30,6 +31,15 @@ describe('categories API', ()=> {
         Object.keys(obj).forEach(key => {
           expect(data.body[key]).toEqual(obj[key]);
         });
+      });
+  });
+  it('TEST post() failure ', ()=> {
+    let obj = {name: 'test'};
+    return mockRequest
+      .post('/api/v1/categories')
+      .send(obj)
+      .then(data => {
+        expect(data.status).toBe(500);
       });
   });
   // it('it can post() product ', ()=> {
@@ -69,14 +79,4 @@ describe('categories API', ()=> {
   //         });
   //     });
   // });
-  it('TEST post() failure ', ()=> {
-    let obj = {name: 'test'};
-    return mockRequest
-      .post('/api/v1/categories')
-      .send(obj)
-      .then(data => {
-        expect(data.status).toBe(500);
-      });
-  });
-  
 });
