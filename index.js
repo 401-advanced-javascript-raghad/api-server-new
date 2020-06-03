@@ -1,12 +1,9 @@
 'use strict';
-
+require('dotenv').config();
 const mongoose = require('mongoose');
 
 const app = require('./lib/server');
 const PORT = process.env.PORT || 3000;
-
-const MONGODB_URI = 'mongodb://localhost:27017/categories-db';
-
 
 const mongooseOptions = {
   useUnifiedTopology: true,
@@ -15,5 +12,5 @@ const mongooseOptions = {
   useFindAndModify: false,
 };
 
-mongoose.connect(MONGODB_URI, mongooseOptions);
+mongoose.connect(process.env.MONGODB_URI, mongooseOptions);
 app.start(PORT);
