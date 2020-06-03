@@ -1,5 +1,4 @@
 'use strict';
-const supergoose = require('@code-fellows/supergoose');
 
 const categories = require('../lib/models/categories/categories.collection');
 
